@@ -4,17 +4,17 @@ Welcome to my "100 Days of Python" repository! I'm embarking on an exciting Pyth
 
 ## Project Highlights
 
-- 🎲 **Blackjack:** Day 1 - A classic card game to sharpen my Python skills.
-- 🐍 **Snake Game:** Day 2 - Leveling up with game development fun.
-- 🏓 **Pong Game:** Day 3 - More game development magic.
-- 📅 **Auto Swipe on Tinder:** Day 4 - Automating actions with Python scripting.
-- 💼 **Auto Job Applications on LinkedIn:** Day 5 - Becoming a web scraping and automation pro.
-- 🎈 **Automate Birthday Emails/SMS:** Day 6 - Sending automated warm wishes.
-- 📝 **Fully Fledged Blog Website:** Day 7 - Venturing into web development with Python.
-- 🌐 **Build Your Own Public API:** Day 8 - Creating a custom API for others to use.
-- 📊 **Data Science with Google Trends:** Day 9 - Analyzing trends using powerful data science libraries.
-- 🧱 **Analyzing Lego Datasets:** Day 10 - Diving deep into data analysis and visualization.
-- 📱 **Google App Store Analysis:** Day 11 - Exploring app data for insights.
+- 🎲 **Blackjack:** - A classic card game to sharpen my Python skills.
+- 🐍 **Snake Game:** - Leveling up with game development fun.
+- 🏓 **Pong Game:** - More game development magic.
+- 📅 **Auto Swipe on Tinder:** - Automating actions with Python scripting.
+- 💼 **Auto Job Applications on LinkedIn:** - Becoming a web scraping and automation pro.
+- 🎈 **Automate Birthday Emails/SMS:** - Sending automated warm wishes.
+- 📝 **Fully Fledged Blog Website:** - Venturing into web development with Python.
+- 🌐 **Build Your Own Public API:** - Creating a custom API for others to use.
+- 📊 **Data Science with Google Trends:** - Analyzing trends using powerful data science libraries.
+- 🧱 **Analyzing Lego Datasets:** - Diving deep into data analysis and visualization.
+- 📱 **Google App Store Analysis:** - Exploring app data for insights.
 
 ## Topics Covered
 
