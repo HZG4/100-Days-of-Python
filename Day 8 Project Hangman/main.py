@@ -49,7 +49,7 @@ while continue_game is True:
         lives = lives - 1
         print(f"You guessed {guess} wrongly. You lose a life.")
     else:
-        print("You guessed {guess} correctly.")
+        print(f"You guessed {guess} correctly.")
 
     print(stages[lives])
 
