@@ -34,7 +34,6 @@ def computer_move():
     if 17 <= sum(computer_cards) <= 21:
         return
 
-
 def declare_winner(player_score, computer_score):
     if  player_score == computer_score:
         return "Draw 🙃"
