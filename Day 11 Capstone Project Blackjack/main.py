@@ -25,10 +25,12 @@ def computer_move():
 
     while sum(computer_cards) < 17:
         computer_cards.append(deal_cards())
-        if sum(computer_cards) > 21 and 11 in computer_cards:
+        while sum(computer_cards) > 21 and 11 in computer_cards:
             computer_cards[computer_cards.index(11)] = 1
-    if 17 <= sum(computer_cards) <= 21:
-        return
+
+        if 17 <= sum(computer_cards) <= 21:
+            return
+
 
 
 def declare_winner(player_score, computer_score):
@@ -50,7 +52,9 @@ def declare_winner(player_score, computer_score):
 def start_game():
     start_query = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
     if start_query == "y":
-        os.clear()
+        os.system("clear")
+        player_cards.clear()
+        computer_cards.clear()
         print(logo)
         i = 2
         while i > 0:
@@ -83,6 +87,8 @@ def start_game():
         print(winner)
         start_game()
     elif start_query == 'n':
+        player_cards.clear()
+        computer_cards.clear()
         exit()
 
 player_cards = []
