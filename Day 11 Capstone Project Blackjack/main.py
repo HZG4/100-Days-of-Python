@@ -15,7 +15,7 @@ def player_move_query():
     if move == 'y':
         player_cards.append(deal_cards())
         print(f"Your cards: {player_cards}, current score: {sum(player_cards)}")
-    elif move == 'n':
+    else:
         print(f"Your cards: {player_cards}, final score: {sum(player_cards)}")
         return False
 
@@ -23,14 +23,16 @@ def computer_move():
     if sum(player_cards) > 21:
         return
 
+    if sum(computer_cards) >= 17:
+        return
+
     while sum(computer_cards) < 17:
         computer_cards.append(deal_cards())
         while sum(computer_cards) > 21 and 11 in computer_cards:
             computer_cards[computer_cards.index(11)] = 1
 
-        if 17 <= sum(computer_cards) <= 21:
-            return
-
+    if 17 <= sum(computer_cards) <= 21:
+        return
 
 
 def declare_winner(player_score, computer_score):
@@ -52,9 +54,9 @@ def declare_winner(player_score, computer_score):
 def start_game():
     start_query = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
     if start_query == "y":
-        os.system("clear")
         player_cards.clear()
         computer_cards.clear()
+        os.system("clear")
         print(logo)
         i = 2
         while i > 0:
@@ -66,7 +68,7 @@ def start_game():
                 computer_cards[i] = 1
             i = i - 1
         print(f"Your cards: {player_cards}, current score: {sum(player_cards)}")
-        print(f"Computer's first card: [{computer_cards[1]}]")
+        print(f"Computer's first card: [{computer_cards[0]}]")
 
         while sum(player_cards) < 21:
             choice = player_move_query()
@@ -87,8 +89,6 @@ def start_game():
         print(winner)
         start_game()
     elif start_query == 'n':
-        player_cards.clear()
-        computer_cards.clear()
         exit()
 
 player_cards = []
