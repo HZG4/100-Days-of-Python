@@ -6,14 +6,19 @@ class Scoreboard(Turtle):
         self.hideturtle()
         self.penup()
         self.color("White")
-        self.goto(-60, 280)
+        self.goto(-110, 280)
         self.score = 0
-        self.write(f"SCORE = {self.score}", font=("Arial", 14, "normal"))
+        self.highscore = 0
+        with open("highscore.txt") as file:
+            self.highscore = int(file.read())
+        self.write(f"Score = {self.score}  Highscore = {self.highscore}" , font=("Arial", 14, "normal"))
 
-    def increment(self):
+    def update_scoreboard(self):
         self.clear()
-        self.score += 1
-        self.write(f"SCORE = {self.score}", font=("Arial", 14, "normal"))
+        if self.score > self.highscore:
+            with open("highscore.txt", mode="w") as file:
+                file.write(str(self.score))
+        self.write(f"Score = {self.score} Highscore = {self.highscore}" , font=("Arial", 14, "normal"))
 
     def game_over(self):
         self.goto(-120, 0)
