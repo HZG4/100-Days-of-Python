@@ -5,6 +5,9 @@ from food import Food
 from scoreboard import Scoreboard
 import time
 
+def restart_game():
+    game_is_on = True
+
 my_screen = Screen()
 my_screen.tracer(0)
 my_screen.listen()
@@ -29,22 +32,23 @@ while game_is_on:
     snake.move()
 
     #detecting collision with food
-
     if snake.head.distance(food) < 15:
+        scoreboard.score += 1
         food.refresh()
         snake.increase_length()
-        scoreboard.increment()
 
-    #detect collision
+    #detect collision with wall
     if snake.head.xcor() > 280 or snake.head.ycor() > 280 or snake.head.xcor() < -290 or snake.head.ycor() < -280:
+        scoreboard.update_scoreboard()
         scoreboard.game_over()
         game_is_on = False
 
-
+    #detect collision with wall
     for segment in snake.snake_body[1:]:
         if snake.head.distance(segment) < 10:
-            game_is_on = False
+            scoreboard.update_scoreboard()
             scoreboard.game_over()
+            game_is_on = False
 
 my_screen.exitonclick()
 
