@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 import pandas
 from password_generator import generate_password
 import pyperclip
@@ -18,12 +19,23 @@ def add_data():
     email = email_entry.get()
     password = password_entry.get()
 
-    new_data = pandas.DataFrame({'Website': [website], 'Email': [email], 'Password': [password]})
-    data = pandas.concat([data, new_data], ignore_index=True)
+    if len(website) == 0 or len(password) == 0 or len(email) == 0:
+        messagebox.showerror(title="Error", message="Do not leave any fields empty.")
 
-    string_data = data.to_string()
-    with open("passwords.txt", "w") as file:
-        file.write(string_data)
+    else:
+        is_confirm = messagebox.askokcancel(title="Confirm Details", message=f"These are the following details: \n\n\n Website: {website} \n\n Email: {email} \n\n Password: {password}")
+
+        if is_confirm:
+            new_data = pandas.DataFrame({'Website': [website], 'Email': [email], 'Password': [password]})
+            data = pandas.concat([data, new_data], ignore_index=True)
+
+            string_data = data.to_string()
+            with open("passwords.txt", "w") as file:
+                file.write(string_data)
+
+            website_entry.delete(0, END)
+            email_entry.delete(0, END)
+            password_entry.delete(0, END)
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
