@@ -47,6 +47,8 @@ news_data = news_response.json()
 news = news_data['articles'][:3]
 
 five_percent = 0.05 * previous_stock_price
+
+# Send an email if there is 5% of increase or decrease in stock prices
 if (lastest_stock_price - previous_stock_price >= five_percent) or (previous_stock_price - lastest_stock_price >= five_percent):
     context = ssl.create_default_context()
     server = smtplib.SMTP('smtp.gmail.com', port=587)
