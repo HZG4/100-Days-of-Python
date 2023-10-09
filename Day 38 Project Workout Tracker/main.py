@@ -1,4 +1,5 @@
 import os
+from datetime import datetime, date
 import requests
 from dotenv import load_dotenv
 
@@ -26,3 +27,22 @@ params = {
 
 nutritionix_response = requests.post(url=nutritionix_endpoint, headers=headers, json=params)
 nutritionix_response = nutritionix_response.json()
+
+now = datetime.now()  # Get the current date and time
+Date = now.date()  # Extract the date part as a date object
+Time = now.strftime("%H:%M:%S")  # Format the time as a string
+
+sheety_endpoint = "https://api.sheety.co/7e51a67e1dbcd669b711fa9584365676/myWorkouts/workouts"
+
+for exercise in nutritionix_response["exercises"]:
+    sheet_inputs = {
+        "workout": {
+            "date": str(Date),  # Convert the date to a string
+            "time": Time,
+            "exercise": exercise["name"].title(),
+            "duration": exercise["duration_min"],
+            "calories": exercise["nf_calories"]
+        }
+    }
+    sheety_response = requests.post(url=sheety_endpoint, json=sheet_inputs, auth=(USERNAME, PASSWORD))
+
