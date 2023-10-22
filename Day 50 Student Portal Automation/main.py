@@ -32,3 +32,23 @@ dashboard.click()
 courses = driver.find_elements(By.CSS_SELECTOR, "tr[onclick]")
 time.sleep(2)
 
+for course in courses:
+    course.click()
+
+    attendance = driver.find_element(By.XPATH, '//*[@id="id_Attendance"]/a')
+    attendance.click()
+
+    course_name = driver.find_element(By.XPATH, '/html/body/div/header/div[3]/div/div[1]/h3').text.strip()
+    print(f"{course_name}:")
+
+    li_elements = driver.find_elements(By.CSS_SELECTOR, "ul.pieIDClass.legend li")
+    for li in li_elements:
+        label = li.find_element(By.TAG_NAME, "em").text.strip()
+        value = li.find_element(By.TAG_NAME, "span").text.strip()
+
+        print(f"{label} : {value}")
+
+    dashboard = driver.find_element(By.XPATH, '/html/body/div/header/div[2]/div/div[2]/ul/li[1]/a')
+    dashboard.click()
+
+input("wait")
