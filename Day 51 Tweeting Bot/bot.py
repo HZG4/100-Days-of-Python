@@ -23,4 +23,16 @@ class InternetSpeedTwitterBot():
             print("Took too Long to respond")
             exit()
     
-    
+    def tweet_at_provider(self):
+        print("Post a tweet to inform about Low Speed Internet.")
+        self.driver.get("https://twitter.com/i/flow/login")
+        
+        input("Press 'Enter' When Logged In.")
+
+        tweet_btn = self.driver.find_element(By.XPATH, '//*[@id="react-root"]/div/div/div[2]/header/div/div/div/div[1]/div[3]/a/div')
+        tweet_btn.click()
+        txt_field = self.driver.find_element(By.XPATH, '//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div/div[3]/div[2]/div[1]/div/div/div/div[1]/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div/label/div[1]/div/div/div/div/div/div[2]/div/div/div/div/span')
+        txt_field.send_keys(f"@StormFiberCare Why is my internet speed {self.download_speed}mbps when I paid for 5mbps?")
+
+        post_btn = self.driver.find_element(By.XPATH, '//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div/div[3]/div[2]/div[1]/div/div/div/div[2]/div[2]/div/div/div[2]/div[4]/div/span/span')
+        post_btn.click()
