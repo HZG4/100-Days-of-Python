@@ -14,7 +14,13 @@ class InternetSpeedTwitterBot():
         self.driver.get('https://www.speedtest.net/')
         go_btn = self.driver.find_element(By.XPATH, '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[1]/a/span[4]')
         go_btn.click()
-        time.sleep(30)
-        self.download_speed = float(self.driver.find_element(By.XPATH, '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[1]/div/div[2]/span').text)
-        print(f"Internet Speed: {self.download_speed}")
-        return self.download_speed
+        try:
+            time.sleep(30)
+            self.download_speed = float(self.driver.find_element(By.XPATH, '//*[@id="container"]/div/div[3]/div/div/div/div[2]/div[3]/div[3]/div/div[3]/div/div/div[2]/div[1]/div[1]/div/div[2]/span').text)
+            print(f"Internet Speed: {self.download_speed}")
+            return self.download_speed
+        except:
+            print("Took too Long to respond")
+            exit()
+    
+    
