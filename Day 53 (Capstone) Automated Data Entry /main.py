@@ -43,3 +43,25 @@ HEADERS = {
 
 response = requests.get(url=current_url, headers=HEADERS)
 soup = BeautifulSoup(response.text, 'lxml')
+
+print('Scraping data from apartments.com .....')
+# Scraping Addresses
+address_soup = soup.find_all(name='div', class_="property-address js-url")
+addresses = []
+for address in address_soup:
+    if address.getText() not in addresses:
+        addresses.append(address.getText())
+
+# Scraping Prices
+price_soup = soup.find_all(name='p', class_="property-pricing")
+prices = []
+for price in price_soup:
+    if price.getText() not in prices:
+        prices.append(price.getText())
+
+# Scraping Links
+link_soup = soup.find_all(name='a', class_='property-link')
+links = []
+for link in link_soup:
+    if link['href'] not in links:
+        links.append(link['href'])
