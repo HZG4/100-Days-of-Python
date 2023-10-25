@@ -65,3 +65,21 @@ links = []
 for link in link_soup:
     if link['href'] not in links:
         links.append(link['href'])
+
+# Data Entry
+print("Entering data into Google Forms .....")
+for i in range(len(links)):
+            driver.get(SHEETS_LINK)
+            address_field = driver.find_element(By.XPATH,
+                                                '/html/body/div/div[2]/form/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/div[1]/input')
+            price_field = driver.find_element(By.XPATH,
+                                              '/html/body/div/div[2]/form/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')
+            link_field = driver.find_element(By.XPATH,
+                                             '/html/body/div/div[2]/form/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div[1]/input')
+            submit_btn = driver.find_element(By.XPATH,
+                                             '/html/body/div/div[2]/form/div[2]/div/div[3]/div[1]/div[1]/div/span')
+            address_field.send_keys(addresses[i])
+            price_field.send_keys(prices[i])
+            link_field.send_keys(links[i])
+            submit_btn.click()
+driver.close()
