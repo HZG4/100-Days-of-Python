@@ -2,6 +2,8 @@ from flask import Flask
 import random
 
 app = Flask(__name__)
+
+# generating a random integer
 random_num = random.randint(0, 9)
 
 @app.route("/")
